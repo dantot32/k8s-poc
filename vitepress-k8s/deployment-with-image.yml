@@ -1,23 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: vitepress-app
   labels:
-    app: nginx
+    app: vitepress
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: vitepress
   template:
     metadata:
-      annotations:
-        kubernetes.io/change-cause: "new version!!!"
       labels:
-        app: nginx
+        app: vitepress
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.23.7
+      - name: vitepress
+        image: vitepress:latest
         ports:
         - containerPort: 80
